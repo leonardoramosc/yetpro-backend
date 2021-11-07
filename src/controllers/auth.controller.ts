@@ -1,7 +1,8 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import db from "../db";
+import AppError from "../utils/app-error";
 
-const signUp = async (req: Request, res: Response) => {
+const signUp = async (req: Request, res: Response, next: NextFunction) => {
   const { body } = req;
 
   try {
@@ -12,11 +13,7 @@ const signUp = async (req: Request, res: Response) => {
       user,
     });
   } catch (err: any) {
-    console.log(err.message);
-    res.status(500).json({
-      status: "fail",
-      message: "Unable to create user.",
-    });
+    next(err);
   }
 };
 
