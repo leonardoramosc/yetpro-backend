@@ -1,7 +1,7 @@
-import { NextFunction, Request, Response, Router } from "express";
-import { checkSchema, validationResult } from 'express-validator';
+import { Router } from "express";
+import { checkSchema } from 'express-validator';
 import authController from "../controllers/auth.controller";
-import userSchema from "../schemas/user.schema";
+import userSchema from "../validators/user.schema";
 import validator from "../utils/validator";
 
 const userRouter = Router();

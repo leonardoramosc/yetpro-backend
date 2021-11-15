@@ -58,6 +58,10 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const protect = async (req: UserIdRequest, res: Response, next: NextFunction) => {
+  if (req.userId) {
+    return next();
+  }
+  
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer')) {
