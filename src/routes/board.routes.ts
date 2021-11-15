@@ -1,11 +1,17 @@
 import { Router } from "express";
-import { checkSchema } from 'express-validator';
+import { checkSchema } from "express-validator";
+import authController from "../controllers/auth.controller";
 import boardController from "../controllers/board.controller";
 import boardSchema from "../schemas/board.schema";
 import validator from "../utils/validator";
 
 const boardRouter = Router();
 
-boardRouter.post("/", checkSchema(boardSchema), validator, boardController.createBoard);
+boardRouter.use(authController.protect);
+
+boardRouter
+  .route("/")
+  .post(checkSchema(boardSchema), validator, boardController.createBoard)
+  .get(boardController.getAllBoards);
 
 export default boardRouter;

@@ -3,6 +3,11 @@ import { NextFunction, Request, Response } from "express";
 export default (err: any, req: Request, res: Response, next: NextFunction) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || "error";
+
+  if (`${err.statusCode}`.startsWith("5")) {
+    console.log(err);
+  }
+  
   err.message = err.statusCode !== 500 ? err.message : "Something wrent wrong!";
 
   /**
@@ -14,10 +19,6 @@ export default (err: any, req: Request, res: Response, next: NextFunction) => {
   if (err.code && `${err.code}`.startsWith("23")) {
     err.statusCode = 400;
     err.message = err.detail;
-  }
-
-  if (`${err.statusCode}`.startsWith("5")) {
-    console.log(err);
   }
 
   res.status(err.statusCode).json({

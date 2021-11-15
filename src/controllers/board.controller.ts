@@ -18,6 +18,21 @@ const createBoard = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const getAllBoards = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const boards = await db('boards').select();
+
+    res.status(200).json({
+      status: 'success',
+      boards
+    });
+
+  } catch(err) {
+    next(err);
+  }
+}
+
 export default {
-  createBoard
+  createBoard,
+  getAllBoards
 }
