@@ -14,4 +14,10 @@ boardRouter
   .post(checkSchema(boardSchema), validator, boardController.createBoard)
   .get(boardController.getAllBoards);
 
+boardRouter
+  .route("/:id")
+  .get(boardController.getOneBoard)
+  .patch(boardController.updateOneBoard)
+  .delete(boardController.deleteOneBoard)
+
 export default boardRouter;

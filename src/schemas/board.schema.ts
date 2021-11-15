@@ -6,10 +6,6 @@ const boardSchema: Schema = {
     isLength: {
       errorMessage: 'board_name should be at least 255 chars long'
     }
-  },
-  user_id: {
-    isInt: true,
-    toInt: true,
   }
 }
 
