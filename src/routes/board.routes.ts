@@ -14,6 +14,7 @@ boardRouter.use(authController.protect);
 boardRouter.use(
   "/:boardId/card-lists",
   checkBoardIdParam,
+  validator,
   cardListRouter
 );
 
