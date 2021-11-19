@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response, Router } from "express";
+import { Router } from "express";
 import { checkSchema, param } from "express-validator";
 import authController from "../controllers/auth.controller";
 import boardController from "../controllers/board.controller";
