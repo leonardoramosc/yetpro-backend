@@ -15,7 +15,7 @@ dotenv.config({ path: './config.env' });
 //     console.log(result);
 // })
 
-const SERVER_PORT = process.env.SERVER_PORT || 8001;
+const SERVER_PORT = process.env.PORT || 8001;
 
 app.listen(SERVER_PORT, () => {
     console.log(`Server listening on port ${SERVER_PORT}`);
